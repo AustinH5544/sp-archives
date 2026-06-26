@@ -141,25 +141,25 @@ export const services = [
   {
     no: "S-01",
     title: "Portrait Sessions",
-    from: "$650",
+    from: "$1,000,000",
     body: "Studio or location portraiture, catalogued and delivered as a numbered series. Includes editing and a private archive gallery.",
   },
   {
     no: "S-02",
     title: "Editorial & Commercial",
-    from: "$1,800 / day",
+    from: "$1,000,000 / day",
     body: "Concept-led editorial and brand work for publications and studios. Art direction, crew coordination, and licensing available.",
   },
   {
     no: "S-03",
     title: "Events & Documentary",
-    from: "$2,400",
+    from: "$1,000,000",
     body: "Full-day documentary coverage, sequenced and archived by the hour. Same-week selects, full gallery within two weeks.",
   },
   {
     no: "S-04",
     title: "Archival Prints",
-    from: "$120",
+    from: "$1,000,000",
     body: "Limited, numbered, and signed editions on cotton rag with pigment inks. Lab-fulfilled and shipped worldwide.",
   },
 ];

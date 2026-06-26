@@ -6,11 +6,11 @@ import { img } from "@/lib/data";
 export const metadata: Metadata = {
   title: "About — Skyelar Payne",
   description:
-    "Skyelar Payne is an editorial and portrait photographer working between Portland and New York. The archive, the philosophy, and the practice behind SP-ARCHIVES.",
+    "Skyelar Payne is an editorial and portrait photographer based in Spokane and Seattle, WA. The archive, the philosophy, and the practice behind SP-ARCHIVES.",
 };
 
 const facts = [
-  ["Based", "Portland · New York"],
+  ["Based", "Spokane · Seattle, WA"],
   ["Working", "Worldwide"],
   ["Since", "2014"],
   ["Focus", "Editorial · Portrait · Place"],
@@ -45,20 +45,21 @@ export default function AboutPage() {
           <div className="md:col-span-5">
             <div className="space-y-6 font-serif text-xl leading-relaxed text-paper">
               <p>
-                I came to photography through archives — boxes of slides,
-                contact sheets, and the quiet authority of a thing that has been
-                kept. That sensibility runs through everything I make.
+                I got into photography by digging through old archives — boxes
+                of slides and contact sheets that people had held onto for
+                decades. The idea that a photo is worth keeping stuck with me,
+                and it shapes how I approach every shoot.
               </p>
               <p className="text-fg">
-                Each commission becomes a numbered series. I shoot with
-                restraint, edit ruthlessly, and present the work as a catalogue:
-                titled, dated, located. The goal is not to show everything, but
-                to keep the right things.
+                Every commission becomes a numbered series. I shoot with
+                restraint and edit ruthlessly. The work gets presented as a
+                catalogue: titled, dated, located. The goal isn&apos;t to show
+                everything — it&apos;s to keep the right things.
               </p>
               <p>
                 My practice spans editorial features, studio portraiture, and
-                long-form documentary projects. I work slowly where I can and
-                fast where I must, but I always file the result properly.
+                long-form documentary work. I move slowly when I can, quickly
+                when I must. Either way, the result gets filed properly.
               </p>
             </div>
 
