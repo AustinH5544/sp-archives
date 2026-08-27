@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "preview": "next build && npx wrangler dev",
+    "deploy": "next build && npx wrangler deploy"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

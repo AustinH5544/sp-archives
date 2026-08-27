@@ -1,0 +1,31 @@
+{
+  // SP-ARCHIVES — Cloudflare Workers (static assets).
+  //
+  // There is deliberately no "main" key: this Worker has no script, it only
+  // serves the Next.js static export from out/. Asset requests are free and
+  // are not billed as Worker invocations.
+  //
+  // When the contact form gets built, add:
+  //   "main": "worker/index.ts",
+  //   "assets": { ..., "binding": "ASSETS", "run_worker_first": ["/api/*"] }
+  "name": "sp-archives",
+  "compatibility_date": "2026-08-26",
+
+  "assets": {
+    "directory": "./out",
+
+    // next.config.ts leaves trailingSlash at its default (false), so the export
+    // writes about.html rather than about/index.html. auto-trailing-slash makes
+    // /about serve about.html and 307s /about.html -> /about, which matches how
+    // next/link builds hrefs.
+    "html_handling": "auto-trailing-slash",
+
+    // out/404.html is generated from src/app/not-found.tsx.
+    // Do NOT use "single-page-application" — all 19 routes are prerendered.
+    "not_found_handling": "404-page"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}

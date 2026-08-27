@@ -6,3 +6,7 @@ build/
 *.log
 .env*.local
 .vercel
+.wrangler/
+
+# Raw photo drops from Skyelar — never commit, never put in public/
+photo-inbox/
