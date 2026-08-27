@@ -2,14 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { JOURNAL_ENABLED } from "@/lib/config";
 
+// Catalogue numbers are assigned after filtering so they stay contiguous
+// whichever way the Journal switch is set.
 const links = [
-  { href: "/work", label: "Work", no: "01" },
-  { href: "/about", label: "About", no: "02" },
-  { href: "/services", label: "Services", no: "03" },
-  { href: "/journal", label: "Journal", no: "04" },
-  { href: "/contact", label: "Contact", no: "05" },
-];
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  ...(JOURNAL_ENABLED ? [{ href: "/journal", label: "Journal" }] : []),
+  { href: "/contact", label: "Contact" },
+].map((l, i) => ({ ...l, no: String(i + 1).padStart(2, "0") }));
 
 export default function SiteNav() {
   const pathname = usePathname();

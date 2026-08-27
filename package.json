@@ -4,11 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node -e \"require('fs').rmSync('out',{recursive:true,force:true})\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "preview": "next build && npx wrangler dev",
-    "deploy": "next build && npx wrangler deploy"
+    "deploy": "next build && npx wrangler deploy",
+    "journal:on": "node scripts/journal.mjs on",
+    "journal:off": "node scripts/journal.mjs off"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

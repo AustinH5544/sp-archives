@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import PageHeader from "@/components/PageHeader";
+import { JOURNAL_ENABLED } from "@/lib/config";
 import { journal } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -10,6 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default function JournalPage() {
+  if (!JOURNAL_ENABLED) notFound();
+
   return (
     <>
       <PageHeader

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { JOURNAL_ENABLED } from "@/lib/config";
 
 export default function SiteFooter() {
   const year = new Date().getFullYear();
@@ -24,7 +25,9 @@ export default function SiteFooter() {
                 ["/work", "Work"],
                 ["/about", "About"],
                 ["/services", "Services"],
-                ["/journal", "Journal"],
+                ...(JOURNAL_ENABLED
+                  ? [["/journal", "Journal"] as [string, string]]
+                  : []),
                 ["/contact", "Contact"],
               ].map(([href, label]) => (
                 <li key={href}>

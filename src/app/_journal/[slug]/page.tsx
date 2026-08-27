@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { JOURNAL_ENABLED } from "@/lib/config";
 import { journal, getEntry, img } from "@/lib/data";
 
 export function generateStaticParams() {
@@ -26,7 +27,7 @@ export default async function JournalEntryPage({
 }) {
   const { slug } = await params;
   const e = getEntry(slug);
-  if (!e) notFound();
+  if (!JOURNAL_ENABLED || !e) notFound();
 
   return (
     <article className="mx-auto max-w-3xl px-5 pt-16 pb-24 md:pt-28 md:pb-32">
