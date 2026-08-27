@@ -41,7 +41,9 @@
   --text-3xl: 2.75rem;
   --text-4xl: 4rem;
   --text-5xl: 6rem;
-  --text-display: clamp(3.5rem, 14vw, 13rem);
+  /* Small end must let SP-ARCHIVES sit on one line at 320px, since the
+     kinetic title is split per character and will otherwise orphan one. */
+  --text-display: clamp(2.25rem, 12vw, 13rem);
 }
 
 * {
@@ -69,6 +71,14 @@ body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-muted);
+}
+
+/* Keyboard focus. :where() keeps specificity at zero so components can
+   override it without a fight. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
 }
 
 .rule {

@@ -88,7 +88,7 @@ export default function Hero() {
               style={{ fontSize: "var(--text-display)", perspective: "600px" }}
               aria-label={TITLE}
             >
-              <span aria-hidden className="block overflow-hidden pb-2">
+              <span aria-hidden className="block overflow-hidden whitespace-nowrap pb-2">
                 {TITLE.split("").map((c, i) => (
                   <span key={i} className="char">
                     {c === "-" ? "–" : c}
