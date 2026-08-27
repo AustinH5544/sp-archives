@@ -18,14 +18,13 @@ export default function Home() {
           </div>
           <div className="md:col-span-9">
             <p className="font-serif text-3xl font-light leading-tight tracking-tight md:text-5xl">
-              I photograph people and places as if assembling a permanent
-              collection — each series numbered, catalogued, and kept.
+              I&rsquo;d rather capture something than make something. Most of
+              what I keep, nobody posed for.
             </p>
             <p className="mt-8 max-w-2xl text-muted">
-              Based between Portland and New York, working worldwide on
-              editorial, portrait, and documentary commissions. Every project
-              enters the archive as a discrete index — titled, dated, and
-              located.
+              Documentary, portrait, and automotive work across the Pacific
+              Northwest and North Idaho. Everything I keep goes into the
+              archive numbered and dated.
             </p>
           </div>
         </div>
@@ -55,7 +54,7 @@ export default function Home() {
           <div>
             <p className="label text-accent">Commissions Open — 2026</p>
             <p className="mt-4 max-w-xl font-serif text-3xl font-light leading-tight md:text-5xl">
-              Have a series in mind? Let&rsquo;s catalogue it together.
+              Got something worth keeping? Let&rsquo;s go shoot it.
             </p>
           </div>
           <Link

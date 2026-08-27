@@ -6,16 +6,16 @@ import { collections } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Work — Index of Series",
   description:
-    "The full catalogue of SP-ARCHIVES — portrait, editorial, place, and documentary series by Skyelar Payne, numbered and indexed.",
+    "The full catalogue of SP-ARCHIVES: automotive, portrait, and documentary series by Skyelar Payne, numbered and indexed.",
 };
 
 export default function WorkPage() {
   return (
     <>
       <PageHeader
-        index="Index — Vol. I / Series 001—006"
+        index="Index — Vol. I / Series 001–004"
         title="The Index"
-        lead="A complete catalogue of series. Each entry is numbered, dated, and located — select any to open the full sequence."
+        lead="Every series, numbered and dated. Select any entry to open the full sequence."
       />
 
       {/* Catalogue table header */}

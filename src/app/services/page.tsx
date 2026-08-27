@@ -22,7 +22,7 @@ export default function ServicesPage() {
       <PageHeader
         index="Services — Investment & Process"
         title="Services"
-        lead="Four ways to commission the archive. Pricing is a starting point — every project is scoped individually."
+        lead="Four ways to work together. Sessions run one to three hours and every one delivers at least 30 edited images to a private gallery."
       />
 
       {/* Services catalogue */}

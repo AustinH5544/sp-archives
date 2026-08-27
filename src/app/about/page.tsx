@@ -6,16 +6,16 @@ import { img } from "@/lib/data";
 export const metadata: Metadata = {
   title: "About — Skyelar Payne",
   description:
-    "Skyelar Payne is an editorial and portrait photographer based in Spokane and Seattle, WA. The archive, the philosophy, and the practice behind SP-ARCHIVES.",
+    "Skyelar Payne is a documentary, portrait and automotive photographer based in the Pacific Northwest. The archive, the practice, and how it started.",
 };
 
 const facts = [
-  ["Based", "Spokane · Seattle, WA"],
-  ["Working", "Worldwide"],
-  ["Since", "2014"],
-  ["Focus", "Editorial · Portrait · Place"],
-  ["Clients", "Aperture, Kinfolk, Monocle*"],
-  ["Recognition", "PPA, Communication Arts*"],
+  ["Based", "Pacific Northwest"],
+  ["Working", "PNW · North Idaho · Travel"],
+  ["Since", "2020"],
+  ["Focus", "Automotive · Portrait · Wild"],
+  ["First camera", "Canon Rebel T4"],
+  ["Still chasing", "Koi · An owl"],
 ];
 
 export default function AboutPage() {
@@ -24,7 +24,7 @@ export default function AboutPage() {
       <PageHeader
         index="About — The Archivist"
         title="Skyelar Payne"
-        lead="I keep a photographic archive the way a librarian keeps a collection — deliberately, in sequence, and for the long term."
+        lead="I photograph cars, wild places, and people at good moments. Everything worth keeping gets numbered and filed."
       />
 
       <section className="mx-auto max-w-[1600px] px-5 pb-24 md:px-10 md:pb-32">
@@ -45,21 +45,27 @@ export default function AboutPage() {
           <div className="md:col-span-5">
             <div className="space-y-6 font-serif text-xl leading-relaxed text-paper">
               <p>
-                I got into photography by digging through old archives — boxes
-                of slides and contact sheets that people had held onto for
-                decades. The idea that a photo is worth keeping stuck with me,
-                and it shapes how I approach every shoot.
+                In 2020 my best friend handed me his old Canon Rebel T4. I had
+                just finished a round of mods on my car and wanted pictures of
+                it. I shot the whole thing on automatic, every setting the
+                camera had, and then I wanted to know why a few of them worked
+                and the rest didn&apos;t.
               </p>
               <p className="text-fg">
-                Every commission becomes a numbered series. I shoot with
-                restraint and edit ruthlessly. The work gets presented as a
-                catalogue: titled, dated, located. The goal isn&apos;t to show
-                everything — it&apos;s to keep the right things.
+                The first frame I&apos;d call mine was a 2012 Mazdaspeed 3, tech
+                package, liquid silver. After that it stopped being about the
+                car.
               </p>
               <p>
-                My practice spans editorial features, studio portraiture, and
-                long-form documentary work. I move slowly when I can, quickly
-                when I must. Either way, the result gets filed properly.
+                Now I shoot cars, wildlife, landscapes, and people, and I&apos;ve
+                stopped apologizing for the range. They&apos;re the things I
+                like. What holds them together is that I&apos;d rather capture
+                something than make something.
+              </p>
+              <p>
+                In a session that means prompts instead of poses. I start further
+                back than most people expect and work my way in, once
+                everyone&apos;s forgotten I&apos;m there.
               </p>
             </div>
 
@@ -74,7 +80,6 @@ export default function AboutPage() {
                 </div>
               ))}
             </dl>
-            <p className="label mt-3">* Representative / illustrative</p>
           </div>
         </div>
       </section>

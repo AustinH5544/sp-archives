@@ -27,24 +27,26 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sp-archives.com"),
   title: {
-    default: "SP-ARCHIVES — Skyelar Payne · Editorial Photography Archive",
+    default: "SP-ARCHIVES — Skyelar Payne · Pacific Northwest Photography",
     template: "%s · SP-ARCHIVES",
   },
   description:
-    "SP-ARCHIVES is the editorial photography archive of Skyelar Payne — a catalogued index of portrait, editorial, and place photography. Curated series, museum-grade prints, and commissions.",
+    "SP-ARCHIVES is the photography archive of Skyelar Payne, covering documentary, portrait, automotive, and wildlife work across the Pacific Northwest and North Idaho. Family, maternity, graduation, and automotive sessions.",
   keywords: [
     "Skyelar Payne",
     "SP-ARCHIVES",
-    "editorial photography",
-    "portrait photographer",
-    "photography archive",
-    "fine art prints",
+    "Pacific Northwest photographer",
+    "automotive photography",
+    "documentary portrait photographer",
+    "family photographer PNW",
+    "maternity photographer",
+    "North Idaho photographer",
   ],
   authors: [{ name: "Skyelar Payne" }],
   openGraph: {
     title: "SP-ARCHIVES — Skyelar Payne",
     description:
-      "An editorial photography archive. Catalogued series, portraiture, and place — by Skyelar Payne.",
+      "Documentary, portrait, and automotive photography across the Pacific Northwest, by Skyelar Payne.",
     type: "website",
     siteName: "SP-ARCHIVES",
   },

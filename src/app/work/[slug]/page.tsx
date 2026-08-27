@@ -2,7 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { collections, getCollection, img } from "@/lib/data";
+import {
+  collections,
+  coverSrc,
+  getCollection,
+  plateCount,
+  plateSrc,
+} from "@/lib/data";
 
 export function generateStaticParams() {
   return collections.map((c) => ({ slug: c.slug }));
@@ -35,7 +41,8 @@ export default async function CollectionPage({
   const next = collections[(idx + 1) % collections.length];
 
   // Build a varied editorial layout: spans cycle across the grid.
-  const plates = Array.from({ length: c.count }, (_, i) => i + 1);
+  const total = plateCount(c);
+  const plates = Array.from({ length: total }, (_, i) => i + 1);
   const spanFor = (i: number) =>
     i % 5 === 0 ? "md:col-span-8" : i % 3 === 0 ? "md:col-span-7" : "md:col-span-5";
 
@@ -44,7 +51,7 @@ export default async function CollectionPage({
       {/* Full-bleed series header */}
       <header className="relative h-svh w-full overflow-hidden">
         <Image
-          src={img(`${c.slug}-cover`, 2000, 2400)}
+          src={coverSrc(c)}
           alt={`${c.title} — cover plate by Skyelar Payne`}
           fill
           priority
@@ -60,7 +67,7 @@ export default async function CollectionPage({
             <span className="label text-right">
               Series No. {c.no}
               <br />
-              {c.count} plates
+              {total} plates
             </span>
           </div>
           <div>
@@ -88,7 +95,7 @@ export default async function CollectionPage({
             >
               <div className="relative aspect-[4/5] overflow-hidden bg-bg-raised">
                 <Image
-                  src={img(`${c.slug}-${p}`, 1100, 1375)}
+                  src={plateSrc(c, i)}
                   alt={`${c.title}, plate ${String(p).padStart(2, "0")} — ${c.location} ${c.year}`}
                   fill
                   loading="lazy"

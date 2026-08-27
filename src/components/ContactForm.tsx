@@ -19,8 +19,8 @@ export default function ContactForm() {
       <div className="border-t border-faint/60 pt-8">
         <p className="label text-accent">Inquiry Received</p>
         <p className="mt-4 font-serif text-3xl font-light leading-tight">
-          Thank you — your inquiry has been logged to the archive. I&rsquo;ll be
-          in touch within 24 hours.
+          Thank you. Your inquiry has been logged to the archive and I&rsquo;ll
+          be in touch within 24 hours.
         </p>
         <button
           onClick={() => setSent(false)}
@@ -74,10 +74,11 @@ export default function ContactForm() {
           <option value="" disabled>
             Select a service
           </option>
-          <option className="bg-bg">Portrait Session</option>
-          <option className="bg-bg">Editorial / Commercial</option>
-          <option className="bg-bg">Events / Documentary</option>
-          <option className="bg-bg">Archival Prints</option>
+          <option className="bg-bg">Family</option>
+          <option className="bg-bg">Maternity</option>
+          <option className="bg-bg">Graduation / Senior</option>
+          <option className="bg-bg">Automotive</option>
+          <option className="bg-bg">Engagement</option>
           <option className="bg-bg">Other</option>
         </select>
       </label>

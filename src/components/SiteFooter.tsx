@@ -9,11 +9,11 @@ export default function SiteFooter() {
           <div className="md:col-span-5">
             <p className="label">Colophon</p>
             <p className="mt-4 max-w-sm font-serif text-2xl leading-snug">
-              SP-ARCHIVES — the editorial photography archive of Skyelar Payne.
+              SP-ARCHIVES, the photography archive of Skyelar Payne.
             </p>
             <p className="mt-4 max-w-sm text-sm text-muted">
-              A catalogued index of portrait, editorial, and place photography.
-              Available for commissions worldwide.
+              A catalogued index of automotive, portrait, and wild places.
+              Booking across the Pacific Northwest.
             </p>
           </div>
 
@@ -47,7 +47,7 @@ export default function SiteFooter() {
                   studio@sp-archives.com
                 </a>
               </li>
-              <li className="text-muted">Portland · New York · Worldwide</li>
+              <li className="text-muted">Pacific Northwest · North Idaho · Travel</li>
               <li className="flex gap-4 pt-2">
                 <a href="#" className="text-muted hover:text-fg">
                   Instagram

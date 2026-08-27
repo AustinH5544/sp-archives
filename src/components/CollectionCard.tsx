@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { type Collection, img } from "@/lib/data";
+import { type Collection, cardSrc, plateCount } from "@/lib/data";
 
 export default function CollectionCard({
   c,
@@ -21,7 +21,7 @@ export default function CollectionCard({
 
       <div className="relative mt-4 aspect-[4/5] overflow-hidden bg-bg-raised">
         <Image
-          src={img(c.slug, 1000, 1250)}
+          src={cardSrc(c)}
           alt={`${c.title} — ${c.category} series by Skyelar Payne, ${c.location} ${c.year}`}
           fill
           priority={priority}
@@ -34,7 +34,7 @@ export default function CollectionCard({
         <h3 className="font-serif text-2xl leading-tight transition-colors group-hover:text-accent">
           {c.title}
         </h3>
-        <span className="label whitespace-nowrap">{c.count} plates</span>
+        <span className="label whitespace-nowrap">{plateCount(c)} plates</span>
       </div>
       <p className="label mt-1">
         {c.location} · {c.year}

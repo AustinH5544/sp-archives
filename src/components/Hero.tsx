@@ -5,7 +5,6 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { img } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -63,8 +62,8 @@ export default function Hero() {
       <section className="hero relative h-svh w-full overflow-hidden">
         <div className="hero-img absolute inset-0 -z-10">
           <Image
-            src={img("hero-northern", 2000, 2400)}
-            alt="Skyelar Payne — archival photograph, Northern Light series"
+            src="/work/liquid-silver/cover.jpg"
+            alt="Skyelar Payne — Liquid Silver series, North Idaho 2026"
             fill
             priority
             sizes="100vw"
@@ -77,9 +76,9 @@ export default function Hero() {
           <div className="hero-meta flex items-start justify-between">
             <p className="label">Vol. I — Index of Series</p>
             <p className="label hidden text-right sm:block">
-              48.13°N / 16.21°E
+              47.68°N / 116.78°W
               <br />
-              Catalogue 001—006
+              Catalogue 001–004
             </p>
           </div>
 
@@ -100,9 +99,9 @@ export default function Hero() {
 
             <div className="hero-meta mt-6 flex max-w-3xl flex-col gap-6 border-t border-faint/60 pt-6 md:flex-row md:items-end md:justify-between">
               <p className="max-w-md font-serif text-lg leading-snug text-paper md:text-xl">
-                An editorial photography archive by{" "}
-                <span className="italic">Skyelar Payne</span> — portrait,
-                editorial, and place, catalogued and numbered.
+                A photography archive by{" "}
+                <span className="italic">Skyelar Payne</span>. Cars, wild
+                places, and people, catalogued and numbered.
               </p>
               <a
                 href="/contact"

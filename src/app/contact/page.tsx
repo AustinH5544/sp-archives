@@ -14,7 +14,7 @@ export default function ContactPage() {
       <PageHeader
         index="Contact — Begin an Inquiry"
         title="Inquire"
-        lead="Tell me about the series you have in mind. I reply to every inquiry within 24 hours."
+        lead="Tell me what you want photographed. I reply to every inquiry within 24 hours."
       />
 
       <section className="mx-auto max-w-[1600px] px-5 pb-24 md:px-10 md:pb-32">
@@ -35,8 +35,8 @@ export default function ContactPage() {
             </div>
             <div className="mt-10 border-t border-faint/60 pt-4">
               <p className="label">Studios</p>
-              <p className="mt-3 text-paper">Portland, OR</p>
-              <p className="text-paper">New York, NY</p>
+              <p className="mt-3 text-paper">Spokane, WA</p>
+              <p className="text-paper">Seattle, WA</p>
               <p className="mt-2 text-muted text-sm">
                 Available worldwide on commission.
               </p>

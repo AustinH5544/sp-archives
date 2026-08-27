@@ -1,5 +1,15 @@
 // SP-ARCHIVES — catalogue data
 // Placeholder imagery served from picsum.photos with stable seeds.
+//
+// Copy drafted 2026-08-26 from the client interview in
+// docs/copy-interview-skyelar.md. Everything here is real information in
+// Skyelar's own framing, but the titles, blurbs and counts are DRAFTS and
+// need his sign-off before launch.
+//
+// STILL NEEDED FROM HIM:
+//   - real locations and years per series (placeholders below)
+//   - real photo counts per series
+//   - starting prices (he wants "starting at" + industry standard figures)
 
 export function img(seed: string, w = 1200, h = 1500) {
   return `https://picsum.photos/seed/sp-${seed}/${w}/${h}`;
@@ -14,71 +24,85 @@ export type Collection = {
   location: string;
   blurb: string;
   count: number;
+  /** Real cover image. Falls back to a picsum seed when absent. */
+  cover?: string;
+  /** Real plate images in display order. Falls back to picsum seeds when absent. */
+  plates?: string[];
 };
+
+/** 01.jpg … NN.jpg under public/work/<slug>/ */
+function localPlates(slug: string, n: number) {
+  return Array.from(
+    { length: n },
+    (_, i) => `/work/${slug}/${String(i + 1).padStart(2, "0")}.jpg`,
+  );
+}
+
+export function coverSrc(c: Collection) {
+  return c.cover ?? img(`${c.slug}-cover`, 2000, 2400);
+}
+
+export function cardSrc(c: Collection) {
+  return c.cover ?? img(c.slug, 1000, 1250);
+}
+
+export function plateCount(c: Collection) {
+  return c.plates?.length ?? c.count;
+}
+
+export function plateSrc(c: Collection, i: number) {
+  return c.plates?.[i] ?? img(`${c.slug}-${i + 1}`, 1100, 1375);
+}
 
 export const collections: Collection[] = [
   {
+    // REAL PHOTOS — 36 frames from the WRX STI shoot, resized to 1800px.
+    // Title still needs Skyelar's sign-off: "Liquid Silver" came from his
+    // Mazdaspeed origin story, but this set is a white STI on North Idaho plates.
     no: "001",
-    slug: "northern-light",
-    title: "Northern Light",
-    category: "Place",
+    slug: "liquid-silver",
+    title: "Liquid Silver",
+    category: "Automotive",
     year: "2026",
-    location: "Lofoten, NO",
+    location: "North Idaho",
     blurb:
-      "A study of latitude and luminance — long blue hours catalogued across the Arctic shelf.",
-    count: 18,
+      "Where all of this started. One car, one afternoon, working from the brick loading docks out to a tree-lined street until the light gave out.",
+    count: 36,
+    cover: "/work/liquid-silver/cover.jpg",
+    plates: localPlates("liquid-silver", 36),
   },
   {
     no: "002",
-    slug: "paper-faces",
-    title: "Paper Faces",
-    category: "Portrait",
-    year: "2025",
-    location: "Portland, US",
+    slug: "expecting",
+    title: "Expecting",
+    category: "Maternity",
+    year: "2026",
+    location: "Pacific Northwest",
     blurb:
-      "Studio portraiture rendered as archival plates. Skin, grain, and the weight of looking.",
-    count: 24,
+      "Sessions in the last few weeks, when nobody feels quite like themselves yet. Prompts instead of poses, and enough distance that people forget I am there.",
+    count: 22,
   },
   {
     no: "003",
-    slug: "after-hours",
-    title: "After Hours",
-    category: "Editorial",
+    slug: "hold-still",
+    title: "Hold Still",
+    category: "Family",
     year: "2025",
-    location: "New York, US",
+    location: "Pacific Northwest",
     blurb:
-      "An editorial sequence shot between midnight and the first delivery trucks.",
-    count: 16,
+      "Families outdoors, rarely standing still. I shoot through the parts most people would call the outtakes.",
+    count: 28,
   },
   {
     no: "004",
-    slug: "field-notes",
-    title: "Field Notes",
-    category: "Place",
-    year: "2024",
-    location: "Atacama, CL",
-    blurb: "Desert geometry and the index of erosion. A logbook in silver and dust.",
-    count: 21,
-  },
-  {
-    no: "005",
-    slug: "the-gathering",
-    title: "The Gathering",
-    category: "Events",
-    year: "2024",
-    location: "Lisbon, PT",
-    blurb: "Documentary coverage of a three-day festival, catalogued by hour.",
+    slug: "the-long-day",
+    title: "The Long Day",
+    category: "Wedding",
+    year: "2025",
+    location: "Pacific Northwest",
+    blurb:
+      "Documentary coverage of the whole day, first light through the last dance. It is the hardest thing I shoot and the one I keep the most from.",
     count: 30,
-  },
-  {
-    no: "006",
-    slug: "still-objects",
-    title: "Still Objects",
-    category: "Commercial",
-    year: "2023",
-    location: "Studio, US",
-    blurb: "Product and still life as museum specimen — lit, labelled, archived.",
-    count: 14,
   },
 ];
 
@@ -95,6 +119,11 @@ export type JournalEntry = {
   excerpt: string;
 };
 
+// TODO — DECISION NEEDED. These four entries are still the original fiction
+// (they reference Lofoten and archival print-making, none of which is real).
+// Skyelar was never asked whether he wants to write a journal. Either he
+// commits to writing, or /journal and /journal/[slug] should be removed from
+// the build and the nav. Do not launch with these.
 export const journal: JournalEntry[] = [
   {
     no: "J-012",
@@ -137,29 +166,32 @@ export function getEntry(slug: string) {
   return journal.find((e) => e.slug === slug);
 }
 
+// Prices read "Inquire" deliberately — it is the one value that is safe if this
+// ships before he supplies numbers. He wants "starting at" with industry-
+// standard figures, so replace each `from` with a real dollar amount.
 export const services = [
   {
     no: "S-01",
-    title: "Portrait Sessions",
-    from: "$1,000,000",
-    body: "Studio or location portraiture, catalogued and delivered as a numbered series. Includes editing and a private archive gallery.",
+    title: "Family & Maternity",
+    from: "Inquire",
+    body: "One to three hours, usually under two. Prompts rather than poses: I start further back than you would expect and work my way in once everyone has forgotten about me. At least 30 edited images, delivered to a private gallery.",
   },
   {
     no: "S-02",
-    title: "Editorial & Commercial",
-    from: "$1,000,000 / day",
-    body: "Concept-led editorial and brand work for publications and studios. Art direction, crew coordination, and licensing available.",
+    title: "Graduations & Seniors",
+    from: "Inquire",
+    body: "One to three hours, wherever you want it across the Pacific Northwest. Same approach as any other portrait session. At least 30 edited images, delivered to a private gallery.",
   },
   {
     no: "S-03",
-    title: "Events & Documentary",
-    from: "$1,000,000",
-    body: "Full-day documentary coverage, sequenced and archived by the hour. Same-week selects, full gallery within two weeks.",
+    title: "Automotive",
+    from: "Inquire",
+    body: "Owners' cars, builds, and meets, parked or rolling. This is where I started and it is still my favorite thing to point a camera at. Open to commercial and brand work.",
   },
   {
     no: "S-04",
-    title: "Archival Prints",
-    from: "$1,000,000",
-    body: "Limited, numbered, and signed editions on cotton rag with pigment inks. Lab-fulfilled and shipped worldwide.",
+    title: "Engagements",
+    from: "Inquire",
+    body: "Shot the same way as everything else, with as little direction as I can get away with. Travel available, billed at cost.",
   },
 ];
