@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
-import { img } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About — Skyelar Payne",
@@ -31,15 +30,18 @@ export default function AboutPage() {
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-7">
             <div className="relative aspect-[4/5] overflow-hidden bg-bg-raised">
+              {/* PLACEHOLDER. Swap for a real portrait of Skyelar when he
+                  sends one, and put the caption back to a self-portrait
+                  credit. Standing in with a frame from series 001. */}
               <Image
-                src={img("portrait-skyelar", 1200, 1500)}
-                alt="Portrait of photographer Skyelar Payne"
+                src="/work/liquid-silver/12.jpg"
+                alt="Subaru WRX STI photographed by Skyelar Payne, North Idaho 2026"
                 fill
                 sizes="(max-width: 768px) 100vw, 58vw"
                 className="object-cover"
               />
             </div>
-            <p className="label mt-3">Self-portrait · Studio · 2026</p>
+            <p className="label mt-3">Liquid Silver · North Idaho · 2026</p>
           </div>
 
           <div className="md:col-span-5">
