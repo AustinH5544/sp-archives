@@ -9,7 +9,12 @@ export default function PageHeader({
 }) {
   return (
     <header className="mx-auto max-w-[1600px] px-5 pt-16 pb-10 md:px-10 md:pt-24 md:pb-14">
-      <div className="flex items-baseline justify-between border-b border-faint/60 pb-4">
+      {/* Stacked below sm: the longer index strings ("Index — Vol. I /
+          Series 001–004") wrap to two lines under ~400px, and justify-between
+          then pushes the last line flush against the wordmark with no gap.
+          Above sm there is room for the catalogue row, with a gap so the two
+          never touch even as index strings change. */}
+      <div className="flex flex-col gap-1 border-b border-faint/60 pb-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
         <span className="label text-accent">{index}</span>
         <span className="label">SP-ARCHIVES</span>
       </div>
