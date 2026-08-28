@@ -11,7 +11,8 @@
     "preview": "next build && npx wrangler dev",
     "deploy": "next build && npx wrangler deploy",
     "journal:on": "node scripts/journal.mjs on",
-    "journal:off": "node scripts/journal.mjs off"
+    "journal:off": "node scripts/journal.mjs off",
+    "icons": "node scripts/build-icons.mjs src/app"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

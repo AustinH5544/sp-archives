@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="SP-ARCHIVES">
+  <!-- TEMPORARY MARK — replace when Skyelar has real branding.
+
+       Archival Index palette: bone catalogue card (#ece7dd), ink monogram,
+       rust index rule along the foot (#b4452f). A light ground rather than
+       the site's near-black, because a dark tile vanishes against dark
+       browser chrome.
+
+       Two deliberate choices:
+
+       1. The monogram is rectangles, not <text>. A text node resolves to
+          whatever monospace face the platform has, so the SVG and the
+          rasterised PNGs would show different letterforms.
+
+       2. The viewBox is 16, not 64. Favicons are drawn at 16px, and on a
+          64 grid a 6-unit stroke lands on 1.5 device pixels there — every
+          edge half-covers a pixel and the whole mark greys into mush. On a
+          16 grid with a 2-unit stroke every edge falls on an integer pixel
+          at 16px, and stays exact at 32, 180 and 512. Keep all coordinates
+          whole numbers. -->
+  <rect width="16" height="16" fill="#ece7dd"/>
+
+  <g fill="#0b0b0d">
+    <!-- S : three bars, joined top-left and bottom-right -->
+    <rect x="1" y="2"  width="6" height="2"/>
+    <rect x="1" y="2"  width="2" height="6"/>
+    <rect x="1" y="6"  width="6" height="2"/>
+    <rect x="5" y="6"  width="2" height="6"/>
+    <rect x="1" y="10" width="6" height="2"/>
+    <!-- P : full stem, closed square bowl on the upper half -->
+    <rect x="9"  y="2" width="2" height="10"/>
+    <rect x="9"  y="2" width="6" height="2"/>
+    <rect x="13" y="2" width="2" height="6"/>
+    <rect x="9"  y="6" width="6" height="2"/>
+  </g>
+
+  <rect y="14" width="16" height="2" fill="#b4452f"/>
+</svg>
