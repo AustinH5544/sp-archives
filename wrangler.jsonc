@@ -11,6 +11,18 @@
   "name": "sp-archives",
   "compatibility_date": "2026-08-26",
 
+  // Skyelar's own Cloudflare account, where sp-archives.com is registered.
+  // Not a secret; account IDs appear in dashboard URLs.
+  "account_id": "68fd0549e41d1746b1ddb0ed5ce0f4b6",
+
+  // Custom domains rather than routes: the Worker IS the origin, so Cloudflare
+  // creates the DNS records and issues the certificates itself. Requires that
+  // no CNAME already exists on these hostnames (the zone is empty, so fine).
+  "routes": [
+    { "pattern": "sp-archives.com", "custom_domain": true },
+    { "pattern": "www.sp-archives.com", "custom_domain": true }
+  ],
+
   "assets": {
     "directory": "./out",
 
