@@ -72,7 +72,10 @@ export default function Hero() {
         </div>
         <div className="hero-overlay absolute inset-0 -z-10 bg-gradient-to-b from-bg/70 via-bg/30 to-bg/90" />
 
-        <div className="mx-auto flex h-full max-w-[1600px] flex-col justify-between px-5 py-8 md:px-10 md:py-12">
+        {/* Bottom padding reserves a lane for the scroll cue, which is
+            positioned against the section rather than this column. Without
+            it the content runs straight into the cue on short screens. */}
+        <div className="mx-auto flex h-full max-w-[1600px] flex-col justify-between px-5 pt-8 pb-16 md:px-10 md:pt-12 md:pb-20">
           <div className="hero-meta flex items-start justify-between">
             <p className="label">Vol. I — Index of Series</p>
             <p className="label hidden text-right sm:block">
@@ -105,7 +108,7 @@ export default function Hero() {
               </p>
               <a
                 href="/contact"
-                className="label inline-flex items-center gap-2 border border-faint/80 px-4 py-2.5 transition-colors hover:border-accent hover:text-fg"
+                className="label inline-flex self-start items-center gap-2 border border-faint/80 px-4 py-2.5 transition-colors hover:border-accent hover:text-fg md:self-auto"
               >
                 Inquire / Check Availability →
               </a>
@@ -113,7 +116,10 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-meta label absolute bottom-6 left-1/2 -translate-x-1/2">
+        {/* inset-x-0 + text-center rather than left-1/2 + translate: with
+            left:50% the shrink-to-fit width is capped at the remaining half
+            of the section, which wrapped this to two lines on phones. */}
+        <div className="hero-meta label absolute inset-x-0 bottom-6 px-5 text-center [@media(max-height:500px)]:hidden">
           ↓ Scroll to browse the index
         </div>
       </section>

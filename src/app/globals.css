@@ -46,6 +46,16 @@
   --text-display: clamp(2.25rem, 12vw, 13rem);
 }
 
+/* Landscape phones leave roughly 240px of hero below the header — not enough
+   for the display title, the lead, and the CTA at full size, so the content
+   overflowed the section. Trade the title down to a height-derived scale
+   there rather than letting it push everything out the bottom. */
+@media (max-height: 500px) {
+  :root {
+    --text-display: clamp(1.75rem, 7vh, 3rem);
+  }
+}
+
 * {
   box-sizing: border-box;
 }
