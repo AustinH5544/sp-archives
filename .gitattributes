@@ -1,0 +1,3 @@
+# Cloudflare parses these line-by-line; keep them LF on every platform
+public/_headers text eol=lf
+public/_redirects text eol=lf
