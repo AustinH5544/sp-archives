@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import CollectionCard from "@/components/CollectionCard";
-import { collections } from "@/lib/data";
+import { featuredCollections } from "@/lib/data";
 
 export default function Home() {
-  const featured = collections.slice(0, 3);
+  const featured = featuredCollections();
 
   return (
     <>

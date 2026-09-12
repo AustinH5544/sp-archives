@@ -170,6 +170,21 @@ export function getCollection(slug: string) {
   return collections.find((c) => c.slug === slug);
 }
 
+/**
+ * The three series shown on the home page, in display order.
+ *
+ * Named explicitly rather than taken as the first three of `collections`,
+ * so the shop window is a choice instead of a side effect of catalogue
+ * order. Editing this does not renumber anything on /work.
+ */
+export const FEATURED_SLUGS = ["liquid-silver", "red-thread", "first-frost"];
+
+export function featuredCollections() {
+  return FEATURED_SLUGS.map((s) => getCollection(s)).filter(
+    (c): c is Collection => Boolean(c),
+  );
+}
+
 export type JournalEntry = {
   no: string;
   slug: string;
