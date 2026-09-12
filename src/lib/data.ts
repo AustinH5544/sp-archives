@@ -42,6 +42,29 @@ export function photoDims(slug: string, i: number) {
   return p ? { width: p.w, height: p.h } : null;
 }
 
+/**
+ * Chosen cover frames, by position in the set (1-based, matching the NN in
+ * the key). Not the first frame of each shoot: red-thread opens on six
+ * black-and-white conversions, so the default picked a greyscale cover for
+ * a series called "Red Thread".
+ *
+ * One image does two jobs — the 4:5 card thumbnail and the full-bleed hero,
+ * which is object-cover centred. A frame can win one crop and lose the
+ * other, so check both before changing these. Several otherwise good
+ * red-thread frames crop to face-only as a hero with no red left in shot.
+ */
+const COVER_FRAME: Record<string, number> = {
+  "red-thread": 19, // seated, dress spread; red dominates card and hero alike
+  "last-summer": 1,
+  "first-frost": 1, // the actual proposal, ring box open
+};
+
+function coverKey(slug: string) {
+  const set = photoSets[slug] ?? [];
+  const pick = set[(COVER_FRAME[slug] ?? 1) - 1] ?? set[0];
+  return `${PHOTOS_BASE}/${pick.key}`;
+}
+
 export type Collection = {
   no: string;
   slug: string;
@@ -100,9 +123,8 @@ export const collections: Collection[] = [
   },
   // 002-004 are live from R2: 163 masters at 4000-6240px, sRGB, 4:4:4,
   // served through img.sp-archives.com and resized per breakpoint by the
-  // Cloudflare transformation loader. Covers are just the first frame of
-  // each set for now and Skyelar should choose them properly. Locations
-  // and years are still placeholders.
+  // Cloudflare transformation loader. Cover frames are chosen in
+  // COVER_FRAME above. Locations and years are still placeholders.
   {
     no: "002",
     slug: "red-thread",
@@ -113,7 +135,7 @@ export const collections: Collection[] = [
     blurb:
       "One red dress, one field, and a two-year-old who had opinions about all of it. We started in the tall grass and finished against a backdrop strung up between two pines.",
     count: 57,
-    cover: `${PHOTOS_BASE}/${photoSets["red-thread"][0].key}`,
+    cover: coverKey("red-thread"),
     plates: r2Plates("red-thread"),
   },
   {
@@ -126,7 +148,7 @@ export const collections: Collection[] = [
     blurb:
       "Dry grass and low light on one of the last warm evenings before she left. Senior sessions are mostly walking and talking until somebody forgets to perform.",
     count: 51,
-    cover: `${PHOTOS_BASE}/${photoSets["last-summer"][0].key}`,
+    cover: coverKey("last-summer"),
     plates: r2Plates("last-summer"),
   },
   {
@@ -139,7 +161,7 @@ export const collections: Collection[] = [
     blurb:
       "Snow on the ground and about forty minutes of usable light. They kept warming each other's hands between frames, so I kept shooting through it.",
     count: 55,
-    cover: `${PHOTOS_BASE}/${photoSets["first-frost"][0].key}`,
+    cover: coverKey("first-frost"),
     plates: r2Plates("first-frost"),
   },
 ];
