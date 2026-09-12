@@ -71,38 +71,43 @@ export const collections: Collection[] = [
     cover: "/work/liquid-silver/cover.jpg",
     plates: localPlates("liquid-silver", 36),
   },
+  // 002-004 have real shoots behind them (163 masters at 4000-6240px, sRGB,
+  // 4:4:4) sitting in SP-Archives-Photos/ but not yet processed onto the
+  // site. `count` is the real Highlights count for each set and will be
+  // replaced automatically once `plates` is populated, since plateCount()
+  // prefers plates.length. Locations and years still need Skyelar.
   {
     no: "002",
-    slug: "expecting",
-    title: "Expecting",
+    slug: "red-thread",
+    title: "Red Thread",
     category: "Maternity",
     year: "2026",
     location: "Pacific Northwest",
     blurb:
-      "Sessions in the last few weeks, when nobody feels quite like themselves yet. Prompts instead of poses, and enough distance that people forget I am there.",
-    count: 22,
+      "One red dress, one field, and a two-year-old who had opinions about all of it. We started in the tall grass and finished against a backdrop strung up between two pines.",
+    count: 57,
   },
   {
     no: "003",
-    slug: "hold-still",
-    title: "Hold Still",
-    category: "Family",
-    year: "2025",
+    slug: "last-summer",
+    title: "Last Summer",
+    category: "Senior",
+    year: "2026",
     location: "Pacific Northwest",
     blurb:
-      "Families outdoors, rarely standing still. I shoot through the parts most people would call the outtakes.",
-    count: 28,
+      "Dry grass and low light on one of the last warm evenings before she left. Senior sessions are mostly walking and talking until somebody forgets to perform.",
+    count: 51,
   },
   {
     no: "004",
-    slug: "the-long-day",
-    title: "The Long Day",
-    category: "Wedding",
-    year: "2025",
+    slug: "first-frost",
+    title: "First Frost",
+    category: "Engagement",
+    year: "2026",
     location: "Pacific Northwest",
     blurb:
-      "Documentary coverage of the whole day, first light through the last dance. It is the hardest thing I shoot and the one I keep the most from.",
-    count: 30,
+      "Snow on the ground and about forty minutes of usable light. They kept warming each other's hands between frames, so I kept shooting through it.",
+    count: 55,
   },
 ];
 
