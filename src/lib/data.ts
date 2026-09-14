@@ -115,7 +115,7 @@ export const collections: Collection[] = [
     title: "White Noise",
     category: "Automotive",
     year: "2026",
-    location: "North Idaho",
+    location: "Pacific Northwest",
     blurb:
       "One car, one afternoon, working from the brick loading docks out to a tree-lined street until the light gave out.",
     count: 36,

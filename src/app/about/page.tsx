@@ -41,7 +41,7 @@ export default function AboutPage() {
                 className="object-cover"
               />
             </div>
-            <p className="label mt-3">White Noise · North Idaho · 2026</p>
+            <p className="label mt-3">White Noise · Pacific Northwest · 2026</p>
           </div>
 
           <div className="md:col-span-5">
