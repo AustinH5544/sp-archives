@@ -59,10 +59,10 @@ export default function AboutPage() {
                 car.
               </p>
               <p>
-                Now I shoot cars, wildlife, landscapes, and people, and I&apos;ve
-                stopped apologizing for the range. They&apos;re the things I
-                like. What holds them together is that I&apos;d rather capture
-                something than make something.
+                Now I shoot cars, wildlife, landscapes, and people. That&apos;s a
+                lot of different subjects, but I don&apos;t pick them to fit a
+                niche. I shoot what I like, and what ties it all together is
+                that I&apos;d rather capture something than make something.
               </p>
               <p>
                 In a session I&apos;ll pose you when a shot needs it, but
