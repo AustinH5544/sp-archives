@@ -1,0 +1,4 @@
+# Workers static assets redirects. Parsed by Cloudflare, not served.
+# Series 001 was renamed from Liquid Silver to White Noise on 2026-09-14.
+/work/liquid-silver /work/white-noise 301
+/work/liquid-silver/* /work/white-noise/:splat 301

@@ -106,20 +106,21 @@ export function plateSrc(c: Collection, i: number) {
 
 export const collections: Collection[] = [
   {
-    // REAL PHOTOS — 36 frames from the WRX STI shoot, resized to 1800px.
-    // Title still needs Skyelar's sign-off: "Liquid Silver" came from his
-    // Mazdaspeed origin story, but this set is a white STI on North Idaho plates.
+    // REAL PHOTOS — 36 frames of a white WRX STI in a brick warehouse
+    // district, resized to 1800px and served from public/. Was "Liquid
+    // Silver", which came from Skyelar's own Mazdaspeed origin story and
+    // never described this car. The old URL 301s via public/_redirects.
     no: "001",
-    slug: "liquid-silver",
-    title: "Liquid Silver",
+    slug: "white-noise",
+    title: "White Noise",
     category: "Automotive",
     year: "2026",
     location: "North Idaho",
     blurb:
-      "Where all of this started. One car, one afternoon, working from the brick loading docks out to a tree-lined street until the light gave out.",
+      "One car, one afternoon, working from the brick loading docks out to a tree-lined street until the light gave out.",
     count: 36,
-    cover: "/work/liquid-silver/cover.jpg",
-    plates: localPlates("liquid-silver", 36),
+    cover: "/work/white-noise/cover.jpg",
+    plates: localPlates("white-noise", 36),
   },
   // 002-004 are live from R2: 163 masters at 4000-6240px, sRGB, 4:4:4,
   // served through img.sp-archives.com and resized per breakpoint by the
@@ -177,7 +178,7 @@ export function getCollection(slug: string) {
  * so the shop window is a choice instead of a side effect of catalogue
  * order. Editing this does not renumber anything on /work.
  */
-export const FEATURED_SLUGS = ["liquid-silver", "red-thread", "first-frost"];
+export const FEATURED_SLUGS = ["white-noise", "red-thread", "first-frost"];
 
 export function featuredCollections() {
   return FEATURED_SLUGS.map((s) => getCollection(s)).filter(

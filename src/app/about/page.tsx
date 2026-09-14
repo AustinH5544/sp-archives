@@ -34,14 +34,14 @@ export default function AboutPage() {
                   sends one, and put the caption back to a self-portrait
                   credit. Standing in with a frame from series 001. */}
               <Image
-                src="/work/liquid-silver/12.jpg"
+                src="/work/white-noise/12.jpg"
                 alt="Subaru WRX STI photographed by Skyelar Payne, North Idaho 2026"
                 fill
                 sizes="(max-width: 768px) 100vw, 58vw"
                 className="object-cover"
               />
             </div>
-            <p className="label mt-3">Liquid Silver · North Idaho · 2026</p>
+            <p className="label mt-3">White Noise · North Idaho · 2026</p>
           </div>
 
           <div className="md:col-span-5">

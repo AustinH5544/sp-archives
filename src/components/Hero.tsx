@@ -62,8 +62,8 @@ export default function Hero() {
       <section className="hero relative h-svh w-full overflow-hidden">
         <div className="hero-img absolute inset-0 -z-10">
           <Image
-            src="/work/liquid-silver/cover.jpg"
-            alt="Skyelar Payne — Liquid Silver series, North Idaho 2026"
+            src="/work/white-noise/cover.jpg"
+            alt="Skyelar Payne — White Noise series, North Idaho 2026"
             fill
             priority
             sizes="100vw"
