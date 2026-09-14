@@ -18,8 +18,8 @@ export default function Home() {
           </div>
           <div className="md:col-span-9">
             <p className="font-serif text-3xl font-light leading-tight tracking-tight md:text-5xl">
-              I&rsquo;d rather capture something than make something. Most of
-              what I keep, nobody posed for.
+              I&rsquo;d rather capture something than make something. The
+              frames I keep longest are usually the ones nobody posed for.
             </p>
             <p className="mt-8 max-w-2xl text-muted">
               Documentary, portrait, and automotive work across the Pacific

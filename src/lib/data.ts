@@ -250,7 +250,7 @@ export const services = [
     no: "S-01",
     title: "Family & Maternity",
     from: "Inquire",
-    body: "One to three hours, usually under two. Prompts rather than poses: I start further back than you would expect and work my way in once everyone has forgotten about me. At least 30 edited images, delivered to a private gallery.",
+    body: "One to three hours, usually under two. Some of it posed, some of it prompted. I set up the shots that need setting up, then step back and let things loosen once everyone has forgotten about me. At least 30 edited images, delivered to a private gallery.",
   },
   {
     no: "S-02",

@@ -65,9 +65,10 @@ export default function AboutPage() {
                 something than make something.
               </p>
               <p>
-                In a session that means prompts instead of poses. I start further
-                back than most people expect and work my way in, once
-                everyone&apos;s forgotten I&apos;m there.
+                In a session I&apos;ll pose you when a shot needs it, but
+                I&apos;d rather give you something to do. I start further back
+                than most people expect and work my way in once everyone&apos;s
+                forgotten I&apos;m there.
               </p>
             </div>
 
