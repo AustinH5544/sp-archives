@@ -17,7 +17,22 @@ export default function SmoothScroll() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
 
-    const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1 });
+    // content MUST be <body>, not Lenis's default <html>.
+    //
+    // Lenis caps wheel scrolling at a height it measures from `content`, and
+    // re-measures only when a ResizeObserver on that element fires. The root
+    // layout gives <html> `h-full`, which pins its box to the viewport, so
+    // the observer on <html> never fires however tall the page gets. After a
+    // client-side navigation from a short page to a long gallery, the wheel
+    // stopped dead at the previous page's height (measured: stuck at
+    // y=3991, the home page's limit, on a 35,860px gallery) while dragging
+    // the native scrollbar still worked. <body> is the box that actually
+    // grows, so observing it keeps the limit current.
+    const lenis = new Lenis({
+      lerp: 0.1,
+      wheelMultiplier: 1,
+      content: document.body,
+    });
     registerLenis(lenis);
 
     lenis.on("scroll", ScrollTrigger.update);
