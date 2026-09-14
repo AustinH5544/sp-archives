@@ -35,7 +35,7 @@ export default function AboutPage() {
                   credit. Standing in with a frame from series 001. */}
               <Image
                 src="/work/white-noise/12.jpg"
-                alt="Subaru WRX STI photographed by Skyelar Payne, North Idaho 2026"
+                alt="Subaru WRX STI photographed by Skyelar Payne, Pacific Northwest 2026"
                 fill
                 sizes="(max-width: 768px) 100vw, 58vw"
                 className="object-cover"
