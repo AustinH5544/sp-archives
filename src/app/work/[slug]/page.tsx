@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import SeriesCover from "@/components/SeriesCover";
 import { notFound } from "next/navigation";
 import {
   collections,
@@ -50,13 +51,10 @@ export default async function CollectionPage({
     <article className="bg-bg">
       {/* Full-bleed series header */}
       <header className="relative h-svh w-full overflow-hidden">
-        <Image
+        <SeriesCover
           src={coverSrc(c)}
+          wideSrc={c.wideCover}
           alt={`${c.title} — cover plate by Skyelar Payne`}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-bg/50 via-transparent to-bg" />
         <div className="absolute inset-0 mx-auto flex max-w-[1600px] flex-col justify-between px-5 py-10 md:px-10 md:py-14">

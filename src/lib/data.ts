@@ -59,10 +59,25 @@ const COVER_FRAME: Record<string, number> = {
   "first-frost": 1, // the actual proposal, ring box open
 };
 
+/**
+ * Landscape frames for the series header on landscape screens. The header
+ * crops to the viewport's shape, so a portrait cover on a wide monitor
+ * shows only its middle third: red-thread's frame 19 lost her head. Only
+ * set these where that happens; the cover frame still serves phones.
+ */
+const WIDE_COVER_FRAME: Record<string, number> = {
+  "red-thread": 24, // same seated pose as the card, whole figure in shot
+};
+
 function coverKey(slug: string) {
   const set = photoSets[slug] ?? [];
   const pick = set[(COVER_FRAME[slug] ?? 1) - 1] ?? set[0];
   return `${PHOTOS_BASE}/${pick.key}`;
+}
+
+function wideCoverKey(slug: string) {
+  const pick = photoSets[slug]?.[(WIDE_COVER_FRAME[slug] ?? 0) - 1];
+  return pick ? `${PHOTOS_BASE}/${pick.key}` : undefined;
 }
 
 export type Collection = {
@@ -76,6 +91,8 @@ export type Collection = {
   count: number;
   /** Real cover image. Falls back to a picsum seed when absent. */
   cover?: string;
+  /** Landscape alternative to `cover` for the header on landscape screens. */
+  wideCover?: string;
   /** Real plate images in display order. Falls back to picsum seeds when absent. */
   plates?: string[];
 };
@@ -137,6 +154,7 @@ export const collections: Collection[] = [
       "One red dress, one field, and a two-year-old who had opinions about all of it. We started in the tall grass and finished against a backdrop strung up between two pines.",
     count: 57,
     cover: coverKey("red-thread"),
+    wideCover: wideCoverKey("red-thread"),
     plates: r2Plates("red-thread"),
   },
   {
