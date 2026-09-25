@@ -76,3 +76,53 @@ export function validateInquiry(data: Record<string, unknown>): Validation {
 
   return { ok: true, inquiry: { name, email, date, location, type, message } };
 }
+
+/** CR and LF inside a header value would let a sender append their own headers. */
+function oneLine(value: string): string {
+  return value.replace(/[\r\n]+/g, " ").trim();
+}
+
+const ESCAPES: Record<string, string> = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+};
+
+function esc(value: string): string {
+  return value.replace(/[&<>"]/g, (c) => ESCAPES[c]);
+}
+
+export function buildEmail(inquiry: Inquiry, now: Date) {
+  const type = inquiry.type || "General";
+  const subject = oneLine(`Inquiry — ${type} — ${inquiry.name}`);
+
+  const rows: [string, string][] = [
+    ["Name", inquiry.name],
+    ["Email", inquiry.email],
+    ["Date / Season", inquiry.date || "—"],
+    ["Location", inquiry.location || "—"],
+    ["Project type", type],
+    ["Submitted", now.toISOString()],
+  ];
+
+  const text = [
+    ...rows.map(([label, value]) => `${label}: ${value}`),
+    "",
+    inquiry.message,
+  ].join("\n");
+
+  const html = [
+    '<div style="font-family:system-ui,sans-serif;font-size:15px;line-height:1.5">',
+    '<table cellpadding="4" style="border-collapse:collapse">',
+    ...rows.map(
+      ([label, value]) =>
+        `<tr><td style="color:#666">${esc(label)}</td><td>${esc(value)}</td></tr>`,
+    ),
+    "</table>",
+    `<p style="white-space:pre-wrap;margin-top:16px">${esc(inquiry.message)}</p>`,
+    "</div>",
+  ].join("");
+
+  return { subject, text, html };
+}
