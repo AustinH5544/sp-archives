@@ -38,6 +38,15 @@ const handler = {
       return env.ASSETS.fetch(request);
     }
 
+    // Refuse on the declared size before reading anything: this is the only
+    // billable path on the Worker, and a large body would otherwise be pulled
+    // into memory just to be thrown away. Chunked requests declare nothing,
+    // so the check after reading stays as the real cap.
+    const declared = Number(request.headers.get("content-length") ?? 0);
+    if (declared > MAX_BODY) {
+      return json(400, { ok: false, error: "That submission is too large." });
+    }
+
     const raw = await request.text();
     if (raw.length > MAX_BODY) {
       return json(400, { ok: false, error: "That submission is too large." });

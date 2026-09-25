@@ -82,6 +82,20 @@ describe("POST /api/contact", () => {
     expect(fetch).not.toHaveBeenCalled();
   });
 
+  it("rejects an oversized body on its declared length, without reading it", async () => {
+    const text = vi.fn(async () => "{}");
+    const fake = {
+      url: "https://sp-archives.com/api/contact",
+      method: "POST",
+      headers: new Headers({ "content-length": String(70 * 1024) }),
+      text,
+    } as unknown as Request;
+    const res = await worker.fetch(fake, env);
+    expect(res.status).toBe(400);
+    expect(text).not.toHaveBeenCalled();
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
   it("silently drops a honeypot hit but looks successful", async () => {
     const res = await worker.fetch(post({ ...valid, company: "Acme SEO" }), env);
     expect(res.status).toBe(200);
