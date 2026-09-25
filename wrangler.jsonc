@@ -1,13 +1,17 @@
 {
   // SP-ARCHIVES — Cloudflare Workers (static assets).
   //
-  // There is deliberately no "main" key: this Worker has no script, it only
-  // serves the Next.js static export from out/. Asset requests are free and
-  // are not billed as Worker invocations.
+  // This Worker serves the Next.js static export from out/ AND runs one
+  // endpoint, POST /api/contact, which emails an inquiry through Resend.
   //
-  // When the contact form gets built, add:
-  //   "main": "worker/index.ts",
-  //   "assets": { ..., "binding": "ASSETS", "run_worker_first": ["/api/*"] }
+  // Adding "main" does not make asset serving billable: Cloudflare serves a
+  // matching static asset before invoking the script, and requests to static
+  // assets are free and unlimited. Only the form post invokes this Worker.
+  //
+  // Do NOT set assets.run_worker_first -- that would route every request
+  // through the script and make all of them billable. See
+  // docs/superpowers/specs/2026-09-24-contact-form-resend-design.md
+  "main": "worker/index.ts",
   "name": "sp-archives",
   "compatibility_date": "2026-08-26",
 
@@ -25,6 +29,10 @@
 
   "assets": {
     "directory": "./out",
+
+    // The script hands unmatched requests back here, which is what keeps
+    // html_handling and not_found_handling (the custom 404) working.
+    "binding": "ASSETS",
 
     // next.config.ts leaves trailingSlash at its default (false), so the export
     // writes about.html rather than about/index.html. auto-trailing-slash makes

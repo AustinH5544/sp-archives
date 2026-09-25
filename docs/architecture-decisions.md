@@ -11,10 +11,19 @@ say "Start new projects with Workers" — a steer, not a forced migration. We
 moved because Workers has the broader feature set, not because Pages is
 going away. `sp-archives.pages.dev` still exists as a fallback.
 
-`wrangler.jsonc` deliberately has **no `main` key**. With no Worker script,
-asset requests are served directly and are free/unbilled. Adding a script
-(for a contact-form API, or to proxy R2) turns every matching request into a
-billed Worker invocation. Weigh that before adding one.
+`wrangler.jsonc` now sets `main` and runs one endpoint, `POST /api/contact`,
+for the contact form. This reverses the original no-script rule but not its
+reasoning: Cloudflare serves a matching static asset **before** invoking a
+Worker script, and requests to static assets are free and unlimited. Only
+the form post is a billable invocation, against 100,000/day on the free
+plan. `run_worker_first` stays unset -- setting it would route every request
+through the script and make all of them billable.
+
+Mail: Resend sends from `inquiries@sp-archives.com` (DNS records on the
+`send.` subdomain); Cloudflare Email Routing delivers `studio@sp-archives.com`
+to Skyelar's inbox (records on the root). Two SPF records on two different
+hostnames -- do not merge them. Design:
+`docs/superpowers/specs/2026-09-24-contact-form-resend-design.md`
 
 Live on `sp-archives.com` and `www.sp-archives.com` as custom domains, so
 the Worker is the origin and Cloudflare issues the certificates itself.
@@ -147,4 +156,4 @@ system.
 - [ ] Real portrait of Skyelar for /about (currently a car frame from 001)
 - [ ] `www` → apex redirect (currently both serve 200 = duplicate content)
 - [ ] Journal: `npm run journal:on` when there is an entry to publish
-- [ ] Contact form is UI-only; needs a backend (would require adding `main`)
+- [ ] Contact form: DNS, Email Routing and the RESEND_API_KEY secret still need to be set up by hand
