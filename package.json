@@ -12,7 +12,9 @@
     "deploy": "next build && npx wrangler deploy",
     "journal:on": "node scripts/journal.mjs on",
     "journal:off": "node scripts/journal.mjs off",
-    "icons": "node scripts/build-icons.mjs src/app"
+    "icons": "node scripts/build-icons.mjs src/app",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -31,6 +33,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.7"
   }
 }
