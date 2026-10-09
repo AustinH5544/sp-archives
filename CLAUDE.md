@@ -87,12 +87,34 @@ file ships in the client bundle.
 - Series 001 (`white-noise`) is the exception — 36 local files under
   `public/work/white-noise/`.
 
-## Contact form
+## Contact form — LIVE as of 2026-09-26
+
 `worker/index.ts` handles `POST /api/contact`; `worker/contact.ts` holds the
-pure validation and email formatting. Resend sends the mail. Still needed
-before it works in production: Resend domain verification, Cloudflare Email
-Routing for `studio@sp-archives.com`, and the `RESEND_API_KEY` secret. See
-`docs/superpowers/plans/2026-09-25-contact-form-resend.md`.
+pure validation and email formatting, under test in `worker/*.test.ts`.
+
+The chain: form -> Worker -> Resend (from `inquiries@sp-archives.com`) ->
+`studio@sp-archives.com` -> Cloudflare Email Routing -> Skyelar's Gmail.
+Reply-to is set to the sender, so replying reaches the client.
+
+Setup that is DONE and must not be re-done: Resend domain verification
+(DKIM TXT at `resend._domainkey`, CNAMEs `send` and `rsend`, DMARC at
+`_dmarc`), Email Routing (MX on the root plus Cloudflare's own DKIM), and
+the `RESEND_API_KEY` secret on the Worker.
+
+**Ordering trap, learned the hard way:** a secret cannot be attached to a
+Worker that has only static assets — the dashboard refuses and the API
+errors. The script must be deployed FIRST, then the secret added. The plan
+doc has this backwards; this file is right.
+
+**wrangler is logged in to Austin's own Cloudflare account**, which cannot
+touch Skyelar's Worker: `wrangler secret put` and `wrangler deploy` both
+fail with "Authentication error [code: 10000]". Use the Cloudflare dashboard
+for secrets, and push to `master` for deploys. To fix properly,
+`wrangler logout` then `wrangler login` and tick Skyelar's account in the
+consent screen's account picker.
+
+Resend free tier: 100 emails/day, 3,000/month. Receiving stays OFF in Resend
+— Email Routing owns inbound, and Resend's inbound MX would fight it.
 
 The API key is a Worker secret. It must never enter the repo, a command
 argument, or a transcript.

@@ -156,4 +156,4 @@ system.
 - [ ] Real portrait of Skyelar for /about (currently a car frame from 001)
 - [ ] `www` → apex redirect (currently both serve 200 = duplicate content)
 - [ ] Journal: `npm run journal:on` when there is an entry to publish
-- [ ] Contact form: DNS, Email Routing and the RESEND_API_KEY secret still need to be set up by hand
+- [ ] Contact form: real-world deliverability unproven beyond one test send
