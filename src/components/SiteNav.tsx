@@ -94,7 +94,7 @@ export default function SiteNav() {
             <span className="label hidden md:inline">Est. MMXXIV</span>
           </Link>
 
-          {/* Desktop index */}
+          {/* Desktop nav */}
           <ul className="hidden items-center gap-1 md:flex md:gap-2">
             {links.map((l) => {
               const active = isActive(l.href);
@@ -130,14 +130,14 @@ export default function SiteNav() {
             type="button"
             onClick={() => setOpen(true)}
             aria-expanded={open}
-            aria-controls="site-index-drawer"
+            aria-controls="site-menu-drawer"
             className="label -mr-2 flex min-h-11 items-center gap-2.5 px-2 text-fg md:hidden"
           >
             <span aria-hidden className="flex w-5 flex-col gap-[5px]">
               <span className="h-px w-full bg-current" />
               <span className="h-px w-full bg-current" />
             </span>
-            Index
+            Menu
           </button>
         </nav>
       </header>
@@ -152,7 +152,7 @@ export default function SiteNav() {
         <button
           type="button"
           tabIndex={-1}
-          aria-label="Close index"
+          aria-label="Close menu"
           onClick={() => setOpen(false)}
           className={`absolute inset-0 h-full w-full cursor-default bg-bg/70 backdrop-blur-sm transition-opacity duration-300 motion-reduce:transition-none ${
             open ? "opacity-100" : "opacity-0"
@@ -160,17 +160,17 @@ export default function SiteNav() {
         />
 
         <div
-          id="site-index-drawer"
+          id="site-menu-drawer"
           ref={panelRef}
           role="dialog"
           aria-modal="true"
-          aria-label="Site index"
+          aria-label="Site menu"
           className={`absolute inset-y-0 right-0 flex w-[min(86vw,360px)] flex-col border-l border-faint/60 bg-bg transition-transform duration-300 ease-out motion-reduce:transition-none ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
           <div className="flex items-center justify-between border-b border-faint/60 px-5 py-4">
-            <span className="label">Index</span>
+            <span className="label">Menu</span>
             <button
               type="button"
               onClick={() => setOpen(false)}
@@ -179,7 +179,7 @@ export default function SiteNav() {
               <span aria-hidden className="text-base leading-none">
                 &#10005;
               </span>
-              <span className="sr-only">Close index</span>
+              <span className="sr-only">Close menu</span>
             </button>
           </div>
 

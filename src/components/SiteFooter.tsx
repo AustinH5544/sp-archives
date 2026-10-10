@@ -13,13 +13,13 @@ export default function SiteFooter() {
               SP-ARCHIVES, the photography archive of Skyelar Payne.
             </p>
             <p className="mt-4 max-w-sm text-sm text-muted">
-              A catalogued index of automotive, portrait, and wild places.
+              Automotive, portrait, and wild places, catalogued.
               Booking across the Pacific Northwest.
             </p>
           </div>
 
           <nav className="md:col-span-3">
-            <p className="label">Index</p>
+            <p className="label">Explore</p>
             <ul className="mt-4 space-y-1.5 text-sm">
               {[
                 ["/work", "Work"],

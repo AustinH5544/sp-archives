@@ -7,8 +7,8 @@ import {
   collections,
   coverSrc,
   getCollection,
-  plateCount,
-  plateSrc,
+  shotCount,
+  shotSrc,
 } from "@/lib/data";
 
 export function generateStaticParams() {
@@ -42,8 +42,8 @@ export default async function CollectionPage({
   const next = collections[(idx + 1) % collections.length];
 
   // Build a varied editorial layout: spans cycle across the grid.
-  const total = plateCount(c);
-  const plates = Array.from({ length: total }, (_, i) => i + 1);
+  const total = shotCount(c);
+  const shots = Array.from({ length: total }, (_, i) => i + 1);
   const spanFor = (i: number) =>
     i % 5 === 0 ? "md:col-span-8" : i % 3 === 0 ? "md:col-span-7" : "md:col-span-5";
 
@@ -54,18 +54,18 @@ export default async function CollectionPage({
         <SeriesCover
           src={coverSrc(c)}
           wideSrc={c.wideCover}
-          alt={`${c.title} — cover plate by Skyelar Payne`}
+          alt={`${c.title} — cover shot by Skyelar Payne`}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-bg/50 via-transparent to-bg" />
         <div className="absolute inset-0 mx-auto flex max-w-[1600px] flex-col justify-between px-5 py-10 md:px-10 md:py-14">
           <div className="flex items-start justify-between">
             <Link href="/work" className="label hover:text-accent">
-              ← Index
+              ← All Work
             </Link>
             <span className="label text-right">
               Series No. {c.no}
               <br />
-              {total} plates
+              {total} shots
             </span>
           </div>
           <div>
@@ -83,18 +83,18 @@ export default async function CollectionPage({
         </div>
       </header>
 
-      {/* Plate grid */}
+      {/* Shot grid */}
       <section className="mx-auto max-w-[1600px] px-5 py-20 md:px-10 md:py-28">
         <div className="grid gap-6 md:grid-cols-12">
-          {plates.map((p, i) => (
+          {shots.map((p, i) => (
             <figure
               key={p}
               className={`reveal ${spanFor(i)} ${i % 2 === 0 ? "" : "md:mt-16"}`}
             >
               <div className="relative aspect-[4/5] overflow-hidden bg-bg-raised">
                 <Image
-                  src={plateSrc(c, i)}
-                  alt={`${c.title}, plate ${String(p).padStart(2, "0")} — ${c.location} ${c.year}`}
+                  src={shotSrc(c, i)}
+                  alt={`${c.title}, shot ${String(p).padStart(2, "0")} — ${c.location} ${c.year}`}
                   fill
                   loading="lazy"
                   sizes="(max-width: 768px) 100vw, 50vw"

@@ -4,17 +4,17 @@ import CollectionCard from "@/components/CollectionCard";
 import { collections } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Work — Index of Series",
+  title: "Work — Photo Series",
   description:
-    "The full catalogue of SP-ARCHIVES: automotive, portrait, and documentary series by Skyelar Payne, numbered and indexed.",
+    "Every photo series by Skyelar Payne: automotive, portrait, and documentary work across the Pacific Northwest.",
 };
 
 export default function WorkPage() {
   return (
     <>
       <PageHeader
-        index="Index — Vol. I / Series 001–004"
-        title="The Index"
+        index="Four Series · 001–004"
+        title="The Work"
         lead="Every series, numbered and dated. Select any entry to open the full sequence."
       />
 

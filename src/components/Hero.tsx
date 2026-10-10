@@ -43,9 +43,14 @@ export default function Hero() {
           scrollTrigger: {
             trigger: ".hero",
             start: "top top",
-            end: "+=110%",
+            // The hero used to hold for +=110%: more than a full screen of
+            // scrolling where the page did not advance, which read as stuck.
+            // scrub also sat at 1, trailing a whole second behind the wheel
+            // on top of Lenis's own smoothing - two lags stacked.
+            end: "+=60%",
             pin: true,
-            scrub: 1,
+            anticipatePin: 1,
+            scrub: 0.4,
           },
         });
         tl.to(".hero-img", { yPercent: -16, scale: 1.12, ease: "none" }, 0)
@@ -77,7 +82,7 @@ export default function Hero() {
             it the content runs straight into the cue on short screens. */}
         <div className="mx-auto flex h-full max-w-[1600px] flex-col justify-between px-5 pt-8 pb-16 md:px-10 md:pt-12 md:pb-20">
           <div className="hero-meta flex items-start justify-between">
-            <p className="label">Vol. I — Index of Series</p>
+            <p className="label">Vol. I — Four Series</p>
             <p className="label hidden text-right sm:block">
               47.68°N / 116.78°W
               <br />
@@ -120,7 +125,7 @@ export default function Hero() {
             left:50% the shrink-to-fit width is capped at the remaining half
             of the section, which wrapped this to two lines on phones. */}
         <div className="hero-meta label absolute inset-x-0 bottom-6 px-5 text-center [@media(max-height:500px)]:hidden">
-          ↓ Scroll to browse the index
+          ↓ Scroll to see the work
         </div>
       </section>
     </div>

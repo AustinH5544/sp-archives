@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { type Collection, cardSrc, plateCount } from "@/lib/data";
+import { type Collection, cardSrc, shotCount } from "@/lib/data";
 
 export default function CollectionCard({
   c,
@@ -34,7 +34,7 @@ export default function CollectionCard({
         <h3 className="font-serif text-2xl leading-tight transition-colors group-hover:text-accent">
           {c.title}
         </h3>
-        <span className="label whitespace-nowrap">{plateCount(c)} plates</span>
+        <span className="label whitespace-nowrap">{shotCount(c)} shots</span>
       </div>
       <p className="label mt-1">
         {c.location} · {c.year}

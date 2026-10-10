@@ -30,13 +30,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured series — archival index */}
+      {/* Featured series */}
       <section className="bg-bg">
         <div className="mx-auto max-w-[1600px] px-5 pb-24 md:px-10 md:pb-32">
           <div className="flex items-end justify-between border-b border-faint/60 pb-4">
             <h2 className="font-serif text-2xl md:text-4xl">Selected Series</h2>
             <Link href="/work" className="label hover:text-accent">
-              View full index →
+              View all work →
             </Link>
           </div>
 

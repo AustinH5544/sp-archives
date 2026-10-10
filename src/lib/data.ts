@@ -32,7 +32,7 @@ const photoSets = photos as Record<string, PhotoRef[]>;
  * deliberately stripped here, because this file is imported into the
  * client bundle and would publish them.
  */
-function r2Plates(slug: string) {
+function r2Shots(slug: string) {
   return (photoSets[slug] ?? []).map((p) => `${PHOTOS_BASE}/${p.key}`);
 }
 
@@ -93,12 +93,12 @@ export type Collection = {
   cover?: string;
   /** Landscape alternative to `cover` for the header on landscape screens. */
   wideCover?: string;
-  /** Real plate images in display order. Falls back to picsum seeds when absent. */
-  plates?: string[];
+  /** Real images in display order. Falls back to picsum seeds when absent. */
+  shots?: string[];
 };
 
 /** 01.jpg … NN.jpg under public/work/<slug>/ */
-function localPlates(slug: string, n: number) {
+function localShots(slug: string, n: number) {
   return Array.from(
     { length: n },
     (_, i) => `/work/${slug}/${String(i + 1).padStart(2, "0")}.jpg`,
@@ -113,12 +113,12 @@ export function cardSrc(c: Collection) {
   return c.cover ?? img(c.slug, 1000, 1250);
 }
 
-export function plateCount(c: Collection) {
-  return c.plates?.length ?? c.count;
+export function shotCount(c: Collection) {
+  return c.shots?.length ?? c.count;
 }
 
-export function plateSrc(c: Collection, i: number) {
-  return c.plates?.[i] ?? img(`${c.slug}-${i + 1}`, 1100, 1375);
+export function shotSrc(c: Collection, i: number) {
+  return c.shots?.[i] ?? img(`${c.slug}-${i + 1}`, 1100, 1375);
 }
 
 export const collections: Collection[] = [
@@ -137,7 +137,7 @@ export const collections: Collection[] = [
       "One car, one afternoon, working from the brick loading docks out to a tree-lined street until the light gave out.",
     count: 36,
     cover: "/work/white-noise/cover.jpg",
-    plates: localPlates("white-noise", 36),
+    shots: localShots("white-noise", 36),
   },
   // 002-004 are live from R2: 163 masters at 4000-6240px, sRGB, 4:4:4,
   // served through img.sp-archives.com and resized per breakpoint by the
@@ -155,7 +155,7 @@ export const collections: Collection[] = [
     count: 57,
     cover: coverKey("red-thread"),
     wideCover: wideCoverKey("red-thread"),
-    plates: r2Plates("red-thread"),
+    shots: r2Shots("red-thread"),
   },
   {
     no: "003",
@@ -168,7 +168,7 @@ export const collections: Collection[] = [
       "Dry grass and low light on one of the last warm evenings before she left. Senior sessions are mostly walking and talking until somebody forgets to perform.",
     count: 51,
     cover: coverKey("last-summer"),
-    plates: r2Plates("last-summer"),
+    shots: r2Shots("last-summer"),
   },
   {
     no: "004",
@@ -181,7 +181,7 @@ export const collections: Collection[] = [
       "Snow on the ground and about forty minutes of usable light. They kept warming each other's hands between frames, so I kept shooting through it.",
     count: 55,
     cover: coverKey("first-frost"),
-    plates: r2Plates("first-frost"),
+    shots: r2Shots("first-frost"),
   },
 ];
 
