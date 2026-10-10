@@ -68,7 +68,11 @@ export default function Hero() {
 
   return (
     <div ref={root}>
-      <section className="hero relative h-svh w-full overflow-hidden">
+      {/* isolate is load-bearing: the image and overlay below sit at -z-10,
+          and without a stacking context here they paint behind the opaque
+          body background and vanish. This used to work only by accident,
+          because pinning put a transform on this element. */}
+      <section className="hero relative isolate h-svh w-full overflow-hidden">
         <div className="hero-img absolute inset-0 -z-10">
           <Image
             src="/work/white-noise/cover.jpg"
