@@ -38,25 +38,29 @@ export default function Hero() {
           ease: "power3.out",
         });
 
-        // 2) Pinned hero with scrubbed parallax tied to the scrollbar
+        // 2) Parallax as the hero scrolls away. Deliberately NOT pinned.
+        //
+        // This used to pin the section and hold it for more than a screen of
+        // scrolling, so the wheel advanced the page by nothing while the copy
+        // faded - which read as the page resisting you. Shortening the hold
+        // only made the stall briefer. Without a pin, every scroll notch
+        // moves the page, and the image drifting slower than the text is
+        // what carries the depth the pin used to.
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: ".hero",
             start: "top top",
-            // The hero used to hold for +=110%: more than a full screen of
-            // scrolling where the page did not advance, which read as stuck.
-            // scrub also sat at 1, trailing a whole second behind the wheel
-            // on top of Lenis's own smoothing - two lags stacked.
-            end: "+=60%",
-            pin: true,
-            anticipatePin: 1,
-            scrub: 0.4,
+            end: "bottom top",
+            // Near-zero so the parallax tracks the wheel; Lenis is already
+            // smoothing the input, and a larger value stacks a second lag.
+            scrub: 0.2,
           },
         });
-        tl.to(".hero-img", { yPercent: -16, scale: 1.12, ease: "none" }, 0)
-          .to(".hero-title", { yPercent: -34, ease: "none" }, 0)
+        tl.to(".hero-img", { yPercent: -12, scale: 1.06, ease: "none" }, 0)
           .to(".hero-overlay", { opacity: 0.85, ease: "none" }, 0)
-          .to(".hero-meta", { opacity: 0, y: -20, ease: "none" }, 0);
+          // Shorter than the rest: the copy is gone by the time you are a
+          // third of the way down, rather than lingering the whole exit.
+          .to(".hero-meta", { opacity: 0, y: -12, ease: "none", duration: 0.35 }, 0);
       });
     },
     { scope: root }
